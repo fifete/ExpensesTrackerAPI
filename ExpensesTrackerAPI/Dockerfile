@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["ExpensesTrackerAPI.csproj", "."]
 RUN dotnet restore "ExpensesTrackerAPI.csproj"
 COPY . .
-WORKDIR "/src/ExpensesTrackerAPI"
+WORKDIR "/src/."
 RUN dotnet build "ExpensesTrackerAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish

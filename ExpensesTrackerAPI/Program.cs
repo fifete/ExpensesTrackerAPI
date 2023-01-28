@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using ExpensesTrackerAPI.Contexts;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,14 +12,14 @@ builder.Services.AddDbContext<ExpensesTrackerContext>(
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(
-        policy =>
-        {
-            policy.WithOrigins(
-                "https://expenses-tracker-ed.netlify.app",
-                "http://localhost:3000"
-                ).AllowAnyMethod().AllowAnyHeader();
-        });
+    options.AddPolicy(MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins(
+                            "https://expenses-tracker-ed.netlify.app",
+                            "http://localhost:3000"
+                          ).AllowAnyHeader().AllowAnyMethod();
+                      });
 });
 
 builder.Services.AddControllers();
@@ -34,9 +36,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
-
 app.UseHttpsRedirection();
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 

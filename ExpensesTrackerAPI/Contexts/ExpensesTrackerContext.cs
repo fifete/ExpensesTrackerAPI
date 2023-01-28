@@ -1,11 +1,11 @@
 ﻿using ExpensesTrackerAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExpenseTrackerAPI.Contexts
+namespace ExpensesTrackerAPI.Contexts
 {
-    public class ExpenseTrackerContext : DbContext
+    public class ExpensesTrackerContext : DbContext
     {
-        public ExpenseTrackerContext(DbContextOptions<ExpenseTrackerContext> options)
+        public ExpensesTrackerContext(DbContextOptions<ExpensesTrackerContext> options)
             : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

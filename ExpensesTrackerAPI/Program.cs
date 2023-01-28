@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using ExpenseTrackerAPI.Contexts;
+using ExpensesTrackerAPI.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<ExpenseTrackerContext>(
+builder.Services.AddDbContext<ExpensesTrackerContext>(
     o => o.UseNpgsql(builder.Configuration.GetConnectionString("ExpensesTrackerContext"))
 );
 

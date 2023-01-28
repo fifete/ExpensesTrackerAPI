@@ -14,7 +14,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins(
-                "https://expenses-tracker-ed.netlify.app/",
+                "https://expenses-tracker-ed.netlify.app",
                 "http://localhost:3000"
                 ).AllowAnyMethod().AllowAnyHeader();
         });
@@ -34,9 +34,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
 app.UseCors();
+
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["ExpensesTrackerAPI/ExpensesTrackerAPI.csproj", "ExpensesTrackerAPI/"]
-RUN dotnet restore "ExpensesTrackerAPI/ExpensesTrackerAPI.csproj"
+COPY ["ExpensesTrackerAPI.csproj", "."]
+RUN dotnet restore "ExpensesTrackerAPI.csproj"
 COPY . .
 WORKDIR "/src/ExpensesTrackerAPI"
 RUN dotnet build "ExpensesTrackerAPI.csproj" -c Release -o /app/build

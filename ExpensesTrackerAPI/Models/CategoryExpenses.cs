@@ -9,6 +9,6 @@ namespace ExpensesTrackerAPI.Models
     {
         public int Id { get; set; }
         [Column(TypeName = "decimal(8, 2)")]
-        public decimal SpendingAmount { get; set; }
+        public decimal spendingamount { get; set; }
     }
 }

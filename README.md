@@ -7,12 +7,12 @@
 ***
 
 <div align="center">
-<img src="" width="400" >
+<img src="https://github.com/fifete/expenses-tracker-react/blob/main/public/expense_tracker_banner.png" width="600" >
 </div>
 
 # 1. Expense Tracker app
 
-🎌 **Expense Tracker app**(スタジオジブリ) es una applicación para **gestionar los gastos diarios** del usuario, el cual tambien puede organizar sus gastos por categorias. Este proyecto tiene como finalidad brindar información 🔍 sobre la cantidad de dinero 💵💸 que el usuario gasta en diferentes ambitos de su vida y así, poder tomar alguna acción concreta para reducirlo, si es necesario.
+💰 **Expense Tracker app** es una applicación fullstack para **gestionar los gastos diarios** del usuario, el cual tambien puede organizar sus gastos por categorias. Este proyecto tiene como finalidad brindar información 🔍 sobre la cantidad de dinero 💵💸 que el usuario gasta en diferentes ambitos de su vida y así, poder tomar alguna acción concreta para reducirlo, si es necesario. Por otro lado, este otro repositorio contiene el código del [frontend](https://es.reactjs.org/) realizado con Reactjs.
 
 ***
 
@@ -53,7 +53,7 @@ Al definir que contenido iría en la página web, se realizo un prototipo genera
 ### 3.1.2 Prototipado de Alta Fidelidad: 💁🏼
 Realización del diseño de la web en base a estilos, paleta de colores, entre otros recursos.
 <div align="center">
-<img  src=""  width="800">
+<img  src="https://github.com/fifete/expenses-tracker-react/blob/main/public/frontEnd%20(1).png"  width="600">
  </div>
  
  ## 4. Tecnologías empleadas 👩🏾‍💻

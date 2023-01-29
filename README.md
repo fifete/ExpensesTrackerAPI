@@ -12,7 +12,7 @@
 
 # 1. Expense Tracker app
 
-💰 **Expense Tracker app** es una applicación fullstack para **gestionar los gastos diarios** del usuario, el cual tambien puede organizar sus gastos por categorias. Este proyecto tiene como finalidad brindar información 🔍 sobre la cantidad de dinero 💵💸 que el usuario gasta en diferentes ambitos de su vida y así, poder tomar alguna acción concreta para reducirlo, si es necesario. Por otro lado, este otro repositorio contiene el código del [frontend](https://es.reactjs.org/) realizado con Reactjs.
+💰 **Expense Tracker app** es una applicación fullstack para **gestionar los gastos diarios** del usuario, el cual tambien puede organizar sus gastos por categorias. Este proyecto tiene como finalidad brindar información 🔍 sobre la cantidad de dinero 💵💸 que el usuario gasta en diferentes ambitos de su vida y así, poder tomar alguna acción concreta para reducirlo, si es necesario. Por otro lado, este otro repositorio contiene el código del [frontend](https://github.com/fifete/expenses-tracker-react) realizado con Reactjs.
 
 ***
 

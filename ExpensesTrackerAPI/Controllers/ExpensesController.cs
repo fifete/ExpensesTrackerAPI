@@ -18,13 +18,13 @@ namespace ExpenseTrackerAPI.Controllers
 
         // GET: api/Expenses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Expense>>> GetExpenses(int categoryId)
+        public async Task<ActionResult<IEnumerable<Expense>>> GetExpenses(int categoryId, string userIdTemp)
         {
             var expenses = _context.Expenses.AsQueryable();
 
-            if (!string.IsNullOrEmpty(categoryId.ToString()))
+            if (!string.IsNullOrEmpty(categoryId.ToString()) && !string.IsNullOrEmpty(userIdTemp))
             {
-                expenses = expenses.Where(e => e.CategoryId == categoryId);
+                expenses = expenses.Where(e => e.CategoryId == categoryId && e.UserIdTemp == userIdTemp);
             }
             return await expenses.ToListAsync();
         }

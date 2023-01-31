@@ -43,6 +43,9 @@ namespace ExpensesTrackerAPI.Contexts
                 expense.HasKey(e => e.Id);
                 expense.Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();
                 expense.Property(e => e.CategoryId).HasColumnName("category_id");
+                expense.Property(e => e.UserId).HasColumnName("user_id");
+                expense.Property(e => e.UserIdTemp).HasColumnName("user_id_temp");
+
                 expense.Property(e => e.Amount).HasColumnName("amount").IsRequired();
                 expense.Property(e => e.Date).HasColumnName("date").HasColumnType("varchar(100)").IsRequired();
                 expense.Property(e => e.Time).HasColumnName("time").HasColumnType("varchar(100)").IsRequired();

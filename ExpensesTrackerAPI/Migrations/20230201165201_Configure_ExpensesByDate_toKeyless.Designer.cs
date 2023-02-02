@@ -3,6 +3,7 @@ using System;
 using ExpensesTrackerAPI.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExpensesTrackerAPI.Migrations
 {
     [DbContext(typeof(ExpensesTrackerContext))]
-    partial class ExpensesTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20230201165201_Configure_ExpensesByDate_toKeyless")]
+    partial class Configure_ExpensesByDate_toKeyless
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

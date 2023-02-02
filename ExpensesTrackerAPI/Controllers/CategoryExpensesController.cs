@@ -18,18 +18,11 @@ namespace ExpensesTrackerAPI.Controllers
             _context = context;
         }
 
-        // GET: api/<CategoryExpensesController>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet("{categoryId}")]
-        public async Task<ActionResult<CategoryExpenseDto>> GetCategoryExpenses(int categoryId)
+        public async Task<ActionResult<CategoryExpenseDto>> GetCategoryExpenses(int categoryId, string uidTemp)
         {
             var categoryExpense = await _context.CategoriesExpenses
-            .FromSqlInterpolated($"SELECT * FROM category_expenses WHERE id = {categoryId}")
+            .FromSqlInterpolated($"SELECT * FROM category_expenses WHERE id = {categoryId} AND user_id_temp = {uidTemp}")
             .FirstOrDefaultAsync();
 
             if (categoryExpense == null)

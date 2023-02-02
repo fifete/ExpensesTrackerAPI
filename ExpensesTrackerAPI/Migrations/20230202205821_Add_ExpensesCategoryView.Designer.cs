@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExpensesTrackerAPI.Migrations
 {
     [DbContext(typeof(ExpensesTrackerContext))]
-    [Migration("20230128004308_Add_categoryExpenses_view")]
-    partial class Add_categoryExpenses_view
+    [Migration("20230202205821_Add_ExpensesCategoryView")]
+    partial class Add_ExpensesCategoryView
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,7 +81,7 @@ namespace ExpensesTrackerAPI.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    b.Property<decimal>("SpendingAmount")
+                    b.Property<decimal>("spendingamount")
                         .HasColumnType("numeric(8,2)");
 
                     b.ToTable("categories_expenses", (string)null);
@@ -119,11 +119,33 @@ namespace ExpensesTrackerAPI.Migrations
                         .HasColumnType("varchar(100)")
                         .HasColumnName("time");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_id");
+
+                    b.Property<string>("UserIdTemp")
+                        .HasColumnType("text")
+                        .HasColumnName("user_id_temp");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.ToTable("expenses", (string)null);
+                });
+
+            modelBuilder.Entity("ExpensesTrackerAPI.Models.ExpenseByDate", b =>
+                {
+                    b.Property<string>("date")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("total_amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("user_id_temp")
+                        .HasColumnType("text");
+
+                    b.ToTable("ExpensesByDate");
                 });
 
             modelBuilder.Entity("ExpensesTrackerAPI.Models.User", b =>

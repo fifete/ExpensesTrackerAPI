@@ -7,16 +7,16 @@ namespace ExpensesTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExpensesController : ControllerBase
+    public class ExpensesByDate : ControllerBase
     {
         private readonly ExpensesTrackerContext _context;
 
-        public ExpensesController(ExpensesTrackerContext context)
+        public ExpensesByDate(ExpensesTrackerContext context)
         {
             _context = context;
         }
 
-        // GET: api/Expenses/ByUserIdAndDate 
+        // GET: api/ExpensesByDate/
         [HttpGet]
         public async Task<ActionResult<ExpenseByDate>> GetExpensesByUsernameAndDate(string UserIdTemp, string date)
         {

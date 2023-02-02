@@ -134,13 +134,13 @@ namespace ExpensesTrackerAPI.Migrations
 
             modelBuilder.Entity("ExpensesTrackerAPI.Models.ExpenseByDate", b =>
                 {
-                    b.Property<string>("Date")
+                    b.Property<string>("date")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("TotalAmount")
+                    b.Property<decimal>("total_amount")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("UserIdTemp")
+                    b.Property<string>("user_id_temp")
                         .HasColumnType("text");
 
                     b.ToTable("ExpensesByDate");

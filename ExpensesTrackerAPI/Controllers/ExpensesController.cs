@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ExpensesTrackerAPI.Contexts;
 using ExpensesTrackerAPI.Models;
 
-namespace ExpenseTrackerAPI.Controllers
+namespace ExpensesTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

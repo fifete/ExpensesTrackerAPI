@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using static ExpenseTrackerAPI.Controllers.CategoriesController;
 using ExpensesTrackerAPI.Contexts;
 using ExpensesTrackerAPI.Models;
 
-namespace ExpenseTrackerAPI.Controllers
+namespace ExpensesTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

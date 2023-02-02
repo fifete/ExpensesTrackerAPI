@@ -45,21 +45,6 @@ namespace ExpenseTrackerAPI.Controllers
         }
 
 
-        // GET: api/Expenses/ByUserIdAndDate 
-        [HttpGet("ByUserIdAndDate")]
-        public async Task<ActionResult<ExpenseByDate>> GetExpensesByUsernameAndDate(string UserIdTemp, string date)
-        {
-            var expensesByDate = await _context.ExpensesByDate
-                .FromSqlInterpolated($"SELECT * FROM expenses_by_date WHERE user_id_temp = {UserIdTemp} AND date = {date}")
-                .FirstOrDefaultAsync();
-
-            if (expensesByDate == null)
-                return NotFound();
-
-            return Ok(expensesByDate);
-        }
-
-
         public class UpdateExpenseDto
         {
             public decimal Amount { get; set; }

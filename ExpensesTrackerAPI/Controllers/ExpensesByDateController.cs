@@ -1,43 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using ExpensesTrackerAPI.Contexts;
+using ExpensesTrackerAPI.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesTrackerAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ExpensesByDateController : ControllerBase
+    public class ExpensesController : ControllerBase
     {
-        // GET: api/<ExpensesByDateController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ExpensesTrackerContext _context;
+
+        public ExpensesController(ExpensesTrackerContext context)
         {
-            return new string[] { "value1", "value2" };
+            _context = context;
         }
 
-        // GET api/<ExpensesByDateController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/Expenses/ByUserIdAndDate 
+        [HttpGet("ByUserIdAndDate")]
+        public async Task<ActionResult<ExpenseByDate>> GetExpensesByUsernameAndDate(string UserIdTemp, string date)
         {
-            return "value";
-        }
+            var expensesByDate = await _context.ExpensesByDate
+                .FromSqlInterpolated($"SELECT * FROM expenses_by_date WHERE user_id_temp = {UserIdTemp} AND date = {date}")
+                .FirstOrDefaultAsync();
 
-        // POST api/<ExpensesByDateController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+            if (expensesByDate == null)
+                return NotFound();
 
-        // PUT api/<ExpensesByDateController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ExpensesByDateController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return Ok(expensesByDate);
         }
     }
 }

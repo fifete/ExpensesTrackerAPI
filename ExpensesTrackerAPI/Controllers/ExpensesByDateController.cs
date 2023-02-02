@@ -17,7 +17,7 @@ namespace ExpensesTrackerAPI.Controllers
         }
 
         // GET: api/Expenses/ByUserIdAndDate 
-        [HttpGet("ByUserIdAndDate")]
+        [HttpGet]
         public async Task<ActionResult<ExpenseByDate>> GetExpensesByUsernameAndDate(string UserIdTemp, string date)
         {
             var expensesByDate = await _context.ExpensesByDate

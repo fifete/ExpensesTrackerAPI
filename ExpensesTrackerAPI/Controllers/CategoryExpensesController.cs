@@ -26,9 +26,13 @@ namespace ExpensesTrackerAPI.Controllers
             .FirstOrDefaultAsync();
 
             if (categoryExpense == null)
-                return NotFound();
-
-            return Ok(categoryExpense);
+            {
+                return Ok(new CategoryExpenseDto { spendingamount = 0 });
+            }
+            else
+            {
+                return Ok(categoryExpense);
+            }
         }
 
         //// POST api/<CategoryExpensesController>

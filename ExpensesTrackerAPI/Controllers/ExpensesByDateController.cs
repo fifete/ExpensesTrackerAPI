@@ -25,9 +25,13 @@ namespace ExpensesTrackerAPI.Controllers
                 .FirstOrDefaultAsync();
 
             if (expensesByDate == null)
-                return NotFound();
-
-            return Ok(expensesByDate);
+            {
+                return Ok(new ExpenseByDate { total_amount = 0 });
+            }
+            else
+            {
+                return Ok(expensesByDate);
+            }
         }
     }
 }

@@ -2,6 +2,8 @@
 using ExpensesTrackerAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,7 +20,24 @@ namespace ExpensesTrackerAPI.Controllers
             _context = context;
         }
 
-        [HttpGet("{categoryId}/{uidTemp}")]
+        [HttpGet("{uidTemp}")]
+        public async Task<ActionResult<CategoriesExpensesAmountDto>> GetCategoriesExpensesAmount(string date, string uidTemp)
+        {
+            var categoriesExpensesAmount = await _context.CategoriesExpenses
+            .FromSqlInterpolated($"SELECT * FROM category_expenses WHERE date = {date} AND user_id_temp = {uidTemp}")
+            .ToListAsync();
+
+            if (categoriesExpensesAmount == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return Ok(categoriesExpensesAmount);
+            }
+        }
+
+        [HttpGet("{uidTemp}/{categoryId}")]
         public async Task<ActionResult<CategoryExpenseDto>> GetCategoryExpenses(int categoryId, string uidTemp)
         {
             var categoryExpense = await _context.CategoriesExpenses
@@ -34,5 +53,15 @@ namespace ExpensesTrackerAPI.Controllers
                 return Ok(categoryExpense);
             }
         }
+    }
+    public class CategoriesExpensesAmountDto
+    {
+        public int id { get; set; }
+        public string? name { get; set; }
+        public string? date { get; set; }
+
+        [Column(TypeName = "decimal(8, 2)")]
+        public decimal spendingamount { get; set; }
+        public string? userIdTemp { get; set; }
     }
 }

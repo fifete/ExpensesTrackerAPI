@@ -18,7 +18,7 @@ namespace ExpensesTrackerAPI.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("{categoryId}/{uidTemp}")]
         public async Task<ActionResult<CategoryExpenseDto>> GetCategoryExpenses(int categoryId, string uidTemp)
         {
             var categoryExpense = await _context.CategoriesExpenses
@@ -34,23 +34,5 @@ namespace ExpensesTrackerAPI.Controllers
                 return Ok(categoryExpense);
             }
         }
-
-        //// POST api/<CategoryExpensesController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<CategoryExpensesController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<CategoryExpensesController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

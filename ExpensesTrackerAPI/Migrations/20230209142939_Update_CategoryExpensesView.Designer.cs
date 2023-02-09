@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExpensesTrackerAPI.Migrations
 {
     [DbContext(typeof(ExpensesTrackerContext))]
-    [Migration("20230208151143_Update_ExpensesCategoryView")]
-    partial class Update_ExpensesCategoryView
+    [Migration("20230209142939_Update_CategoryExpensesView")]
+    partial class Update_CategoryExpensesView
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,16 +75,24 @@ namespace ExpensesTrackerAPI.Migrations
                     b.ToTable("categories", (string)null);
                 });
 
-            modelBuilder.Entity("ExpensesTrackerAPI.Models.CategoryExpenseDto", b =>
+            modelBuilder.Entity("ExpensesTrackerAPI.Models.CategoryExpensesAmount", b =>
                 {
-                    b.Property<int>("Id")
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
+                    b.Property<string>("date")
+                        .HasColumnType("text");
 
-                    b.Property<decimal>("spendingamount")
-                        .HasColumnType("numeric(8,2)");
+                    b.Property<int>("id")
+                        .HasColumnType("integer");
 
-                    b.ToTable("categories_expenses", (string)null);
+                    b.Property<string>("name")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("spending_amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("user_id_temp")
+                        .HasColumnType("text");
+
+                    b.ToTable("CategoriesExpenses");
                 });
 
             modelBuilder.Entity("ExpensesTrackerAPI.Models.Expense", b =>

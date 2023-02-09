@@ -55,17 +55,12 @@ namespace ExpensesTrackerAPI.Contexts
                     .HasForeignKey(e => e.CategoryId)
                     .HasConstraintName("category_id_fkey");
             });
-            modelBuilder.Entity<CategoryExpenseDto>(catexp =>
-            {
-                catexp.ToTable("categories_expenses");
-                catexp.Property(e => e.Id).HasColumnName("id");
-            });
         }
 
         public DbSet<User> Users { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
         public DbSet<Expense> Expenses { get; set; } = null!;
-        public DbSet<CategoryExpenseDto> CategoriesExpenses { get; set; } = null!;
+        public DbSet<CategoryExpensesAmount> CategoriesExpenses { get; set; } = null!;
         public DbSet<ExpenseByDate> ExpensesByDate { get; set; }
 
     }

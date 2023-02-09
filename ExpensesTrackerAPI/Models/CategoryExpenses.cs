@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ExpensesTrackerAPI.Models
 {
     [Keyless]
-    public class CategoryExpenseDto
+    public class CategoryExpensesAmount
     {
-        public int Id { get; set; }
-        [Column(TypeName = "decimal(8, 2)")]
-        public decimal spendingamount { get; set; }
+        public int id { get; set; }
+        public string? name { get; set; }
+        public string? date { get; set; }
+        public string? color { get; set; }
+        public decimal spending_amount { get; set; }
+        public string? user_id_temp { get; set; }
     }
 }

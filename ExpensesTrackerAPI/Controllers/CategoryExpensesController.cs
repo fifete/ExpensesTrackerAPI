@@ -21,7 +21,7 @@ namespace ExpensesTrackerAPI.Controllers
         }
 
         [HttpGet("{uidTemp}")]
-        public async Task<ActionResult<CategoriesExpensesAmountDto>> GetCategoriesExpensesAmount(string date, string uidTemp)
+        public async Task<ActionResult<CategoryExpensesAmount>> GetCategoriesExpensesAmount(string date, string uidTemp)
         {
             var categoriesExpensesAmount = await _context.CategoriesExpenses
             .FromSqlInterpolated($"SELECT * FROM category_expenses WHERE date = {date} AND user_id_temp = {uidTemp}")
@@ -46,7 +46,7 @@ namespace ExpensesTrackerAPI.Controllers
 
             if (categoryExpense == null)
             {
-                return Ok(new CategoryExpenseDto { spendingamount = 0 });
+                return Ok(new CategoryExpenseDto { spending_amount = 0 });
             }
             else
             {
@@ -54,14 +54,21 @@ namespace ExpensesTrackerAPI.Controllers
             }
         }
     }
-    public class CategoriesExpensesAmountDto
+    //public class CategoriesExpensesAmountDto
+    //{
+    //    public int id { get; set; }
+    //    public string? name { get; set; }
+    //    public string? date { get; set; }
+
+    //    [Column(TypeName = "decimal(8, 2)")]
+    //    public decimal spendingamount { get; set; }
+    //    public string? userIdTemp { get; set; }
+    //}
+
+    public class CategoryExpenseDto
     {
         public int id { get; set; }
-        public string? name { get; set; }
-        public string? date { get; set; }
-
         [Column(TypeName = "decimal(8, 2)")]
-        public decimal spendingamount { get; set; }
-        public string? userIdTemp { get; set; }
+        public decimal spending_amount { get; set; }
     }
 }

@@ -62,6 +62,8 @@ namespace ExpensesTrackerAPI.Contexts
         public DbSet<Expense> Expenses { get; set; } = null!;
         public DbSet<CategoryExpensesAmount> CategoriesExpenses { get; set; } = null!;
         public DbSet<ExpenseByDate> ExpensesByDate { get; set; }
+        public DbSet<SpendingAmountDto> SpendingsAmount { get; set; }
+
 
     }
 }
